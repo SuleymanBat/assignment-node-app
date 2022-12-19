@@ -15,12 +15,19 @@ A Kubernetes cluster must be set up and configured with kubectl.
 The following secrets must be configured in the repository settings:
 
 AWS_ACCESS_KEY: The access key for the AWS account.
+
 AWS_SECRET_ACCESS_KEY: The secret access key for the AWS account.
+
 AWS_SSH_KEY_PRIVATE: The private key for the SSH key pair used to access the EC2 instances.
+
 AWS_SSH_KEY_PUBLIC: The public key for the SSH key pair used to access the EC2 instances.
+
 REGISTRY: The URL of the AWS ECR registry.
+
 REPOSITORY: The name of the repository in the ECR registry.
+
 IMAGE_TAG: The tag to be used for the Docker image.
+
 KUBE_CONFIG: The base64-encoded kubeconfig file for the Kubernetes cluster.
 
 ## CI/CD Pipeline
@@ -75,11 +82,14 @@ eksctl create cluster \
 
 
 aws eks list-clusters --output=json
+
 aws eks --region us-east-1 update-kubeconfig --name suleyman-cluster-assignment
 
 # Installing HELM
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+
 chmod 700 get_helm.sh
+
 ./get_helm.sh
 
 
@@ -89,6 +99,7 @@ helm show values bitnami/node > values.yaml
 aws ecr create-repository --repository-name suleyman-assign-repo
 
 ECR URL
+
 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo
 
 docker tag suleyman-assign-repo 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:latest
