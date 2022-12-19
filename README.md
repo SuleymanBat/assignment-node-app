@@ -44,3 +44,4 @@ docker push 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:la
 
 helm install assignment bitnami/node
 # assignment-node-app
+# assignment-node-app
