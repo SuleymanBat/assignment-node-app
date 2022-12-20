@@ -29,8 +29,8 @@ jobs:
         run: |-
           
           docker build -t suleyman-assign-repo:$ingresslatest .
-          docker tag suleyman-assign-repo 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:ingress
-          docker push 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:ingress
+          docker tag suleyman-assign-repo 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:ingresslatest
+          docker push 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:ingresslatest
         working-directory: node-hostname
       
  
@@ -64,5 +64,5 @@ jobs:
 
         run: |
           helm upgrade --install nodeapp  ./nodeChart --atomic --timeout 2m -f ./values.yaml \
-               --set image.name=890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:ingress
+               --set image.name=890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:ingresslatest
 
