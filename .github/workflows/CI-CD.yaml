@@ -28,7 +28,7 @@ jobs:
           
         run: |-
           
-          docker build -t suleyman-assign-repo:$ingresslatest .
+          docker build -t suleyman-assign-repo:ingresslatest .
           docker tag suleyman-assign-repo 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:ingresslatest
           docker push 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:ingresslatest
         working-directory: node-hostname
