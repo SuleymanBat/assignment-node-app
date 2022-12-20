@@ -2,15 +2,12 @@ CI/CD
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  TF_STATE_BUCKET_NAME: ${{ secrets.AWS_TF_STATE_BUCKET_NAME }}
-  PRIVATE_SSH_KEY: ${{ secrets.AWS_SSH_KEY_PRIVATE }}
-  PUBLIC_SSH_KEY: ${{ secrets.AWS_SSH_KEY_PUBLIC }}
   AWS_REGION: us-east-1
 
 jobs:    
@@ -64,14 +61,15 @@ jobs:
           mkdir -p $HOME/.kube/
           echo "${{ secrets.KUBE_CONFIG }}" > $HOME/.kube/config
           chmod 600 $HOME/.kube/config
+
       - name: Install helm
         run: |
           curl -LO https://get.helm.sh/helm-v3.8.0-linux-amd64.tar.gz
           tar -zxvf helm-v3.8.0-linux-amd64.tar.gz
           mv linux-amd64/helm /usr/local/bin/helm
           helm version
-
-
+      - name: Lint helm charts
+        run: helm init ./nodeChart
       - name: Deploy
         env:
            IMAGE_TAG: ${{ github.sha }}
@@ -79,9 +77,6 @@ jobs:
            REPOSITORY: suleyman-assign-repo
 
         run: |
-          helm repo add bitnami https://charts.bitnami.com/bitnami
-          helm upgrade --install my-release bitnami/node --atomic --timeout 1m -f ./values.yaml \
-            --namespace dev --create-namespace \
-            --set image.tag=$IMAGE_TAG
-            --set image.name=$REGISTRY/$REPOSITORY
+          helm upgrade --install nodeapp  ./nodeChart --atomic --timeout 2m -f ./values.yaml \
+               --set image.name=$REGISTRY/$REPOSITORY/$IMAGE_TAG
 

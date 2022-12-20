@@ -8,7 +8,7 @@
 ## @param global.storageClass Global StorageClass for Persistent Volume(s)
 ##
 global:
-  imageRegistry: "890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo"
+  #imageRegistry: "890927215245.dkr.ecr.us-east-1.amazonaws.com"
   ## E.g.
   ## imagePullSecrets:
   ##   - myRegistryKeySecretName
@@ -135,7 +135,7 @@ image:
   registry: 890927215245.dkr.ecr.us-east-1.amazonaws.com
   repository: suleyman-assign-repo
   tag: latest
-  digest: ""
+  digest: "sha256:35f8d239b7893e2fa19347ff814335fa6e2135eea96494910f8dd401ca409c85"
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images

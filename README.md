@@ -95,6 +95,9 @@ chmod 700 get_helm.sh
 
 helm show values bitnami/node > values.yaml
 
+sudo usermod -aG docker $USER
+
+sudo docker build -t suleyman-assign-repo:latest .
 
 aws ecr create-repository --repository-name suleyman-assign-repo
 
@@ -109,3 +112,5 @@ aws ecr get-login-password --region us-east-1 | docker login --username AWS --pa
 docker push 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:latest
 
 helm install assignment bitnami/node
+
+
