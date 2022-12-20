@@ -107,11 +107,11 @@ ECR URL
 
 docker build -t suleyman-assign-repo:ingress .
 
-docker tag suleyman-assign-repo 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:latest
+docker tag suleyman-assign-repo 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:ingress
 
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 890927215245.dkr.ecr.us-east-1.amazonaws.com
 
-docker push 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:latest
+docker push 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:ingress
 
 helm install assignment bitnami/node
 

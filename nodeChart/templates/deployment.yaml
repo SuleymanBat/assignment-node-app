@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nodeapp
-        image: 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:latest
+        image: 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:ingress
         ports:
         - containerPort: 80
