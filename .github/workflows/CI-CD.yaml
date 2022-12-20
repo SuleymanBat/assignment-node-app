@@ -24,7 +24,7 @@ jobs:
         env:
           REGISTRY: ${{ secrets.REGISTRY }}
           REPOSITORY: ${{ secrets.REPOSITORY }}
-          IMAGE_TAG: ${{ github.sha }}
+          
           
         run: |-
           
@@ -58,7 +58,7 @@ jobs:
         run: helm init ./nodeChart
       - name: Deploy
         env:
-           IMAGE_TAG: ${{ github.sha }}
+           
            REGISTRY: ${{ secrets.REGISTRY }}
            REPOSITORY: ${{ secrets.REPOSITORY }}
 
