@@ -15,11 +15,11 @@ jobs:
     
     runs-on: ubuntu-latest
     steps:
-      - name: Download repository
-        uses: actions/download-artifact@v2
-        with:
-          name: repository
       - name: Login to AWS ECR
+        env:
+          REGISTRY: ${{ secrets.REGISTRY }}
+          REPOSITORY: ${{ secrets.REPOSITORY }}
+          IMAGE_TAG: latest
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
       - name: Build, push docker image
