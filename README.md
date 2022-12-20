@@ -105,6 +105,8 @@ ECR URL
 
 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo
 
+docker build -t suleyman-assign-repo:ingress .
+
 docker tag suleyman-assign-repo 890927215245.dkr.ecr.us-east-1.amazonaws.com/suleyman-assign-repo:latest
 
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 890927215245.dkr.ecr.us-east-1.amazonaws.com
