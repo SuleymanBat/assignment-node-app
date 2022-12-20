@@ -26,7 +26,7 @@ jobs:
         env:
           REGISTRY: ${{ secrets.REGISTRY }}
           REPOSITORY: ${{ secrets.REPOSITORY }}
-          IMAGE_TAG: ${{ secrets.IMAGE_TAG }}
+          IMAGE_TAG: latest
           
         run: |-
          
@@ -59,9 +59,9 @@ jobs:
         run: helm init ./nodeChart
       - name: Deploy
         env:
-           IMAGE_TAG: ${{ github.sha }}
-           REGISTRY:  890927215245.dkr.ecr.eu-west-1.amazonaws.com
-           REPOSITORY: suleyman-assign-repo
+           IMAGE_TAG: latest
+           REGISTRY: ${{ secrets.REGISTRY }}
+           REPOSITORY: ${{ secrets.REPOSITORY }}
 
         run: |
           helm upgrade --install nodeapp  ./nodeChart --atomic --timeout 2m -f ./values.yaml \
